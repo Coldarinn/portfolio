@@ -1,372 +1,451 @@
 .skills {
-	position: relative;
-	min-height: 100vh;
-	padding: 100px 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	&__animation {
-		position: absolute;
-		left: 0;
-		top: 50%;
-		transform: translate(0,-50%);
-		width: 50%;
-		display: flex;
-		align-items: center;
-		@media (max-width:$pc){
-			position: relative; 
-			transform: translate(0,0);
-			justify-content: center;
-			width: 100%;
-		}
-		canvas {
-			width: 70%;
-			display: inline-block;
-			@media (max-width:$pc){
-				width: 50%;
-			}
-			@media (max-width:$mobile){
-				width: 70%; 
-			}
-		}
-	}
-	&__title {
-		margin-bottom: 50px;
-		text-align: right;
-		@media (max-width:$tabletSmall){
-			margin-bottom: 40px;
-		}
-		@media (max-width:$mobile){
-			margin-bottom: 30px; 
-		}
-		span {
-			&::before{
-				bottom: 0;
-			}
-		}
-	}
-	&__body {
-		display: flex;
-		justify-content: flex-end;
-		margin-left: auto;
-		flex-wrap: wrap;
-		gap: 30px;
-		max-width: 800px;
-		@media (max-width:$pc){
-			max-width: 100%;
-			justify-content: center;
-		}
-		@media (max-width:$mobile){
-			gap: 10px; 
-		}
-	}
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__animation {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 50%;
+    display: flex;
+    align-items: center;
+    @media (max-width: $pc) {
+      position: relative;
+      transform: translate(0, 0);
+      justify-content: center;
+      width: 100%;
+    }
+    canvas {
+      width: 70%;
+      display: inline-block;
+      @media (max-width: $pc) {
+        width: 50%;
+      }
+      @media (max-width: $mobile) {
+        width: 70%;
+      }
+    }
+  }
+  &__title {
+    margin-bottom: 50px;
+    text-align: right;
+    @media (max-width: $tabletSmall) {
+      margin-bottom: 40px;
+    }
+    @media (max-width: $mobile) {
+      margin-bottom: 30px;
+    }
+    span {
+      &::before {
+        bottom: 0;
+      }
+    }
+  }
+  &__body {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 800px;
+    @media (max-width: $pc) {
+      max-width: 100%;
+      justify-content: center;
+    }
+    @media (max-width: $mobile) {
+      gap: 10px;
+    }
+  }
 }
 
 .sphere-skills {
-	&__item {
-		font-size: 30px;
-		color: $blue;
-	}
+  &__item {
+    font-size: 30px;
+    color: $blue;
+  }
 }
 
 .item-skills {
-	flex: 0 0 calc(33% - 25px);
-	height: 100%;
-	@media (max-width:$pc){
-		flex: 0 0 calc(25% - 25px);
-	}
-	@media (max-width:$mobile){
-		flex: 0 0 calc(33% - 8px);
-	}
-	&__wrapper {
-		padding-top: 100%;
-		position: relative;
-	}
-	&__body {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		border: 1px solid rgba($slate, 0.7);
-		transition: 0.35s ease-in-out;
-		@media (any-hover: hover){
-			&:hover{
-				border-radius: 50%;
-				.item-skills__icon {
-					opacity: 1;
-				}
-			}
-		}
-		&:active {
-			border-radius: 50%;
-			.item-skills__icon {
-				opacity: 1;
-			}
-		}
-		&--html {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #E44D26;
-					box-shadow:  inset 0 0 30px #E44D26,  0 0 30px #E44D26;
-					.item-skills__name {
-						color: #E44D26;
-						text-shadow: 0 0 10px #E44D26, 0 0 12px #E44D26;
-					}
-				}
-			}
-			&:active {
-				border-color: #E44D26;
-				box-shadow:  inset 0 0 30px #E44D26,  0 0 30px #E44D26;
-				.item-skills__name {
-					color: #E44D26;
-					text-shadow: 0 0 10px #E44D26, 0 0 12px #E44D26;
-				}
-			}
-		}
-		&--css {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #264DE4;
-					box-shadow:  inset 0 0 30px #264DE4,  0 0 30px #264DE4;
-					.item-skills__name {
-						color: #264DE4;
-						text-shadow: 0 0 10px #264DE4, 0 0 12px #264DE4;
-					}
-				}
-			}
-			&:active {
-				border-color: #264DE4;
-				box-shadow:  inset 0 0 30px #264DE4,  0 0 30px #264DE4;
-				.item-skills__name {
-					color: #264DE4;
-					text-shadow: 0 0 10px #264DE4, 0 0 12px #264DE4;
-				}
-			}
-		}
-		&--js {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #e9ca32;
-					box-shadow:  inset 0 0 30px #e9ca32,  0 0 30px #e9ca32;
-					.item-skills__name {
-						color: #e9ca32;
-						text-shadow: 0 0 10px #e9ca32, 0 0 12px #e9ca32;
-					}
-				}
-			}
-			&:active {
-				border-color: #e9ca32;
-				box-shadow:  inset 0 0 30px #e9ca32,  0 0 30px #e9ca32;
-				.item-skills__name {
-					color: #e9ca32;
-					text-shadow: 0 0 10px #e9ca32, 0 0 12px #e9ca32;
-				}
-			}
-		}
-		&--react {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #61DBFB;
-					box-shadow:  inset 0 0 30px #61DBFB,  0 0 30px #61DBFB;
-					.item-skills__name {
-						color: #61DBFB;
-						text-shadow: 0 0 10px #61DBFB, 0 0 12px #61DBFB;
-					}
-				}
-			}
-			&:active {
-				border-color: #61DBFB;
-				box-shadow:  inset 0 0 30px #61DBFB,  0 0 30px #61DBFB;
-				.item-skills__name {
-					color: #61DBFB;
-					text-shadow: 0 0 10px #61DBFB, 0 0 12px #61DBFB;
-				}
-			}
-		}
-		&--redux {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #764ABC;
-					box-shadow:  inset 0 0 30px #764ABC,  0 0 30px #764ABC;
-					.item-skills__name {
-						color: #764ABC;
-						text-shadow: 0 0 10px #764ABC, 0 0 12px #764ABC;
-					}
-				}
-			}
-			&:active {
-				border-color: #764ABC;
-				box-shadow:  inset 0 0 30px #764ABC,  0 0 30px #764ABC;
-				.item-skills__name {
-					color: #764ABC;
-					text-shadow: 0 0 10px #764ABC, 0 0 12px #764ABC;
-				}
-			}
-		}
-		&--next {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #fff;
-					box-shadow:  inset 0 0 30px #fff,  0 0 30px #fff;
-					.item-skills__name {
-						color: #fff;
-						text-shadow: 0 0 10px #fff, 0 0 12px #fff;
-					}
-				}
-			}
-			&:active {
-				border-color: #fff;
-				box-shadow:  inset 0 0 30px #fff,  0 0 30px #fff;
-				.item-skills__name {
-					color: #fff;
-					text-shadow: 0 0 10px #fff, 0 0 12px #fff;
-				}
-			}
-		}
-		&--git {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #f03c2e;
-					box-shadow:  inset 0 0 30px #f03c2e,  0 0 30px #f03c2e;
-					.item-skills__name {
-						color: #f03c2e;
-						text-shadow: 0 0 10px #f03c2e, 0 0 12px #f03c2e;
-					}
-				}
-			}
-			&:active {
-				border-color: #f03c2e;
-				box-shadow:  inset 0 0 30px #f03c2e,  0 0 30px #f03c2e;
-				.item-skills__name {
-					color: #f03c2e;
-					text-shadow: 0 0 10px #f03c2e, 0 0 12px #f03c2e;
-				}
-			}
-		}
-		&--gulp {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #D34A47;
-					box-shadow:  inset 0 0 30px #D34A47,  0 0 30px #D34A47;
-					.item-skills__name {
-						color: #D34A47;
-						text-shadow: 0 0 10px #D34A47, 0 0 12px #D34A47;
-					}
-				}
-			}
-			&:active {
-				border-color: #D34A47;
-				box-shadow:  inset 0 0 30px #D34A47,  0 0 30px #D34A47;
-				.item-skills__name {
-					color: #D34A47;
-					text-shadow: 0 0 10px #D34A47, 0 0 12px #D34A47;
-				}
-			}
-		}
-		&--node {
-			@media (any-hover: hover){
-				&:hover{
-					border-color: #8CC84B;
-					box-shadow:  inset 0 0 30px #8CC84B,  0 0 30px #8CC84B;
-					.item-skills__name {
-						color: #8CC84B;
-						text-shadow: 0 0 10px #8CC84B, 0 0 12px #8CC84B;
-					}
-				}
-			}
-			&:active {
-				border-color: #8CC84B;
-				box-shadow:  inset 0 0 30px #8CC84B,  0 0 30px #8CC84B;
-				.item-skills__name {
-					color: #8CC84B;
-					text-shadow: 0 0 10px #8CC84B, 0 0 12px #8CC84B;
-				}
-			}
-		}
-	}
-	&__icon {
-		width: 100%;
-		margin-bottom: 15px;
-		opacity: 0.2;
-		transition: 0.35s ease-in-out;
-		@media (max-width:$mobile){
-			margin-bottom: 10px;
-		}
-		svg {
-			max-width: 100%;
-		}
-		&--html {
-			max-width: 85px;
-			@media (max-width:$mobile){
-				max-width: 55px; 
-			}
-		}
-		&--css {
-			max-width: 90px;
-			@media (max-width:$mobile){
-				max-width: 60px; 
-			}
-		}
-		&--js {
-			max-width: 60px;
-			@media (max-width:$mobile){
-				max-width: 30px; 
-			}
-		}
-		&--react {
-			max-width: 85px;
-			@media (max-width:$mobile){
-				max-width: 55px; 
-			}
-		}
-		&--redux {
-			max-width: 75px;
-			@media (max-width:$mobile){
-				max-width: 45px; 
-			}
-		}
-		&--next {
-			max-width: 85px;
-			@media (max-width:$mobile){
-				max-width: 55px; 
-			}
-		}
-		&--git {
-			max-width: 64px;
-			@media (max-width:$mobile){
-				max-width: 41px; 
-			}
-		}
-		&--gulp {
-			max-width: 45px;
-			@media (max-width:$mobile){
-				max-width: 25px; 
-			}
-		}
-		&--node {
-			max-width: 64px;
-			@media (max-width:$mobile){
-				max-width: 41px; 
-			}
-		}
-	}
-	&__name {
-		font-size: 15px;
-		color: rgba($slate, 0.7);
-		transition: 0.35s ease-in-out;
-		@media (max-width:$tabletSmall){
-			font-size: 13px;
-		}
-		@media (max-width:$mobile){
-			font-size: 12px;
-			text-align: center; 
-			font-weight: 500;
-		}
-	}
+  flex: 0 0 calc(33% - 25px);
+  height: 100%;
+  @media (max-width: $pc) {
+    flex: 0 0 calc(25% - 25px);
+  }
+  @media (max-width: $mobile) {
+    flex: 0 0 calc(33% - 8px);
+  }
+  &__wrapper {
+    padding-top: 100%;
+    position: relative;
+  }
+  &__body {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba($slate, 0.7);
+    transition: 0.35s ease-in-out;
+    @media (any-hover: hover) {
+      &:hover {
+        border-radius: 50%;
+        .item-skills__icon {
+          opacity: 1;
+        }
+      }
+    }
+    &:active {
+      border-radius: 50%;
+      .item-skills__icon {
+        opacity: 1;
+      }
+    }
+    &--html {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #e44d26;
+          box-shadow: inset 0 0 30px #e44d26, 0 0 30px #e44d26;
+          .item-skills__name {
+            color: #e44d26;
+            text-shadow: 0 0 10px #e44d26, 0 0 12px #e44d26;
+          }
+        }
+      }
+      &:active {
+        border-color: #e44d26;
+        box-shadow: inset 0 0 30px #e44d26, 0 0 30px #e44d26;
+        .item-skills__name {
+          color: #e44d26;
+          text-shadow: 0 0 10px #e44d26, 0 0 12px #e44d26;
+        }
+      }
+    }
+    &--css {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #cb6699;
+          box-shadow: inset 0 0 30px #cb6699, 0 0 30px #cb6699;
+          .item-skills__name {
+            color: #cb6699;
+            text-shadow: 0 0 10px #cb6699, 0 0 12px #cb6699;
+          }
+        }
+      }
+      &:active {
+        border-color: #264de4;
+        box-shadow: inset 0 0 30px #264de4, 0 0 30px #264de4;
+        .item-skills__name {
+          color: #264de4;
+          text-shadow: 0 0 10px #264de4, 0 0 12px #264de4;
+        }
+      }
+    }
+    &--js {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #e9ca32;
+          box-shadow: inset 0 0 30px #e9ca32, 0 0 30px #e9ca32;
+          .item-skills__name {
+            color: #e9ca32;
+            text-shadow: 0 0 10px #e9ca32, 0 0 12px #e9ca32;
+          }
+        }
+      }
+      &:active {
+        border-color: #e9ca32;
+        box-shadow: inset 0 0 30px #e9ca32, 0 0 30px #e9ca32;
+        .item-skills__name {
+          color: #e9ca32;
+          text-shadow: 0 0 10px #e9ca32, 0 0 12px #e9ca32;
+        }
+      }
+    }
+    &--react {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #61dbfb;
+          box-shadow: inset 0 0 30px #61dbfb, 0 0 30px #61dbfb;
+          .item-skills__name {
+            color: #61dbfb;
+            text-shadow: 0 0 10px #61dbfb, 0 0 12px #61dbfb;
+          }
+        }
+      }
+      &:active {
+        border-color: #61dbfb;
+        box-shadow: inset 0 0 30px #61dbfb, 0 0 30px #61dbfb;
+        .item-skills__name {
+          color: #61dbfb;
+          text-shadow: 0 0 10px #61dbfb, 0 0 12px #61dbfb;
+        }
+      }
+    }
+    &--redux {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #764abc;
+          box-shadow: inset 0 0 30px #764abc, 0 0 30px #764abc;
+          .item-skills__name {
+            color: #764abc;
+            text-shadow: 0 0 10px #764abc, 0 0 12px #764abc;
+          }
+        }
+      }
+      &:active {
+        border-color: #764abc;
+        box-shadow: inset 0 0 30px #764abc, 0 0 30px #764abc;
+        .item-skills__name {
+          color: #764abc;
+          text-shadow: 0 0 10px #764abc, 0 0 12px #764abc;
+        }
+      }
+    }
+    &--next {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #fff;
+          box-shadow: inset 0 0 30px #fff, 0 0 30px #fff;
+          .item-skills__name {
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 12px #fff;
+          }
+        }
+      }
+      &:active {
+        border-color: #fff;
+        box-shadow: inset 0 0 30px #fff, 0 0 30px #fff;
+        .item-skills__name {
+          color: #fff;
+          text-shadow: 0 0 10px #fff, 0 0 12px #fff;
+        }
+      }
+    }
+    &--fsd {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #517aed;
+          box-shadow: inset 0 0 30px #517aed, 0 0 30px #517aed;
+          .item-skills__name {
+            color: #517aed;
+            text-shadow: 0 0 10px #517aed, 0 0 12px #517aed;
+          }
+        }
+      }
+      &:active {
+        border-color: #517aed;
+        box-shadow: inset 0 0 30px #517aed, 0 0 30px #517aed;
+        .item-skills__name {
+          color: #517aed;
+          text-shadow: 0 0 10px #517aed, 0 0 12px #517aed;
+        }
+      }
+    }
+    &--webpack {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #8ed6fb;
+          box-shadow: inset 0 0 30px #8ed6fb, 0 0 30px #8ed6fb;
+          .item-skills__name {
+            color: #8ed6fb;
+            text-shadow: 0 0 10px #8ed6fb, 0 0 12px #8ed6fb;
+          }
+        }
+      }
+      &:active {
+        border-color: #8ed6fb;
+        box-shadow: inset 0 0 30px #8ed6fb, 0 0 30px #8ed6fb;
+        .item-skills__name {
+          color: #8ed6fb;
+          text-shadow: 0 0 10px #8ed6fb, 0 0 12px #8ed6fb;
+        }
+      }
+    }
+    &--ts {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #3178c6;
+          box-shadow: inset 0 0 30px #3178c6, 0 0 30px #3178c6;
+          .item-skills__name {
+            color: #3178c6;
+            text-shadow: 0 0 10px #3178c6, 0 0 12px #3178c6;
+          }
+        }
+      }
+      &:active {
+        border-color: #3178c6;
+        box-shadow: inset 0 0 30px #3178c6, 0 0 30px #3178c6;
+        .item-skills__name {
+          color: #3178c6;
+          text-shadow: 0 0 10px #3178c6, 0 0 12px #3178c6;
+        }
+      }
+    }
+    &--eslint {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #8080f2;
+          box-shadow: inset 0 0 30px #8080f2, 0 0 30px #8080f2;
+          .item-skills__name {
+            color: #8080f2;
+            text-shadow: 0 0 10px #8080f2, 0 0 12px #8080f2;
+          }
+        }
+      }
+      &:active {
+        border-color: #8080f2;
+        box-shadow: inset 0 0 30px #8080f2, 0 0 30px #8080f2;
+        .item-skills__name {
+          color: #8080f2;
+          text-shadow: 0 0 10px #8080f2, 0 0 12px #8080f2;
+        }
+      }
+    }
+    &--jest {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #99425b;
+          box-shadow: inset 0 0 30px #99425b, 0 0 30px #99425b;
+          .item-skills__name {
+            color: #99425b;
+            text-shadow: 0 0 10px #99425b, 0 0 12px #99425b;
+          }
+        }
+      }
+      &:active {
+        border-color: #99425b;
+        box-shadow: inset 0 0 30px #99425b, 0 0 30px #99425b;
+        .item-skills__name {
+          color: #99425b;
+          text-shadow: 0 0 10px #99425b, 0 0 12px #99425b;
+        }
+      }
+    }
+    &--story {
+      @media (any-hover: hover) {
+        &:hover {
+          border-color: #ff4785;
+          box-shadow: inset 0 0 30px #ff4785, 0 0 30px #ff4785;
+          .item-skills__name {
+            color: #ff4785;
+            text-shadow: 0 0 10px #ff4785, 0 0 12px #ff4785;
+          }
+        }
+      }
+      &:active {
+        border-color: #ff4785;
+        box-shadow: inset 0 0 30px #ff4785, 0 0 30px #ff4785;
+        .item-skills__name {
+          color: #ff4785;
+          text-shadow: 0 0 10px #ff4785, 0 0 12px #ff4785;
+        }
+      }
+    }
+  }
+  &__icon {
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.2;
+    transition: 0.35s ease-in-out;
+    pointer-events: none;
+    @media (max-width: $mobile) {
+      margin-bottom: 10px;
+    }
+    svg {
+      max-width: 100%;
+    }
+    &--html {
+      max-width: 85px;
+      @media (max-width: $mobile) {
+        max-width: 55px;
+      }
+    }
+    &--css {
+      max-width: 90px;
+      @media (max-width: $mobile) {
+        max-width: 60px;
+      }
+    }
+    &--js {
+      max-width: 60px;
+      @media (max-width: $mobile) {
+        max-width: 30px;
+      }
+    }
+    &--react {
+      max-width: 85px;
+      @media (max-width: $mobile) {
+        max-width: 55px;
+      }
+    }
+    &--redux {
+      max-width: 75px;
+      @media (max-width: $mobile) {
+        max-width: 45px;
+      }
+    }
+    &--next {
+      max-width: 85px;
+      @media (max-width: $mobile) {
+        max-width: 55px;
+      }
+    }
+    &--fsd {
+      max-width: 110px;
+      @media (max-width: $mobile) {
+        max-width: 41px;
+      }
+    }
+    &--webpack {
+      max-width: 75px;
+      @media (max-width: $mobile) {
+        max-width: 35px;
+      }
+    }
+    &--ts {
+      max-width: 64px;
+      @media (max-width: $mobile) {
+        max-width: 41px;
+      }
+    }
+    &--eslint {
+      max-width: 80px;
+      @media (max-width: $mobile) {
+        max-width: 60px;
+      }
+    }
+    &--jest {
+      max-width: 80px;
+      @media (max-width: $mobile) {
+        max-width: 60px;
+      }
+    }
+    &--story {
+      max-width: 80px;
+      @media (max-width: $mobile) {
+        max-width: 60px;
+      }
+    }
+  }
+  &__name {
+    font-size: 15px;
+    color: rgba($slate, 0.7);
+    transition: 0.35s ease-in-out;
+    @media (max-width: $tabletSmall) {
+      font-size: 13px;
+    }
+    @media (max-width: $mobile) {
+      font-size: 12px;
+      text-align: center;
+      font-weight: 500;
+    }
+  }
 }
