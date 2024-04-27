@@ -4,10 +4,11 @@ import { Animation } from "./Animation"
 import { Background } from "./Background"
 
 const Intro = () => {
-  const textRef = useTypingText(
-    ["code cool websites", "love React", "develop mobile apps"],
-    2,
-  )
+  const textRef = useTypingText([
+    "code cool websites",
+    "love React",
+    "develop mobile apps",
+  ])
 
   return (
     <Wrapper>

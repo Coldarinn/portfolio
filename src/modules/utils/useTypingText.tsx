@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 import TextPlugin from "gsap/TextPlugin"
 
-export const useTypingText = (texts: string[] = [], duration = 2) => {
+export const useTypingText = (texts: string[] = []) => {
   gsap.registerPlugin(TextPlugin)
   const textRef = useRef(null)
 
@@ -18,7 +18,7 @@ export const useTypingText = (texts: string[] = [], duration = 2) => {
         textElement,
         { text: "" },
         {
-          duration,
+          duration: 2,
           ease: "none",
           onComplete: eraseText,
           text: {
@@ -31,8 +31,8 @@ export const useTypingText = (texts: string[] = [], duration = 2) => {
     const eraseText = () => {
       gsap.to(textElement, {
         onComplete: nextText,
-        duration,
-        delay: 3,
+        duration: 2,
+        delay: 1,
         ease: "none",
         text: {
           value: "",
@@ -47,7 +47,7 @@ export const useTypingText = (texts: string[] = [], duration = 2) => {
     }
 
     animateText()
-  }, [texts, duration])
+  }, [texts])
 
   return textRef
 }
