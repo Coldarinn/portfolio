@@ -1,0 +1,31 @@
+@import "./vars/index.css";
+
+@font-face {
+  font-family: "FuturaFuturis";
+  src: url("../../assets/fonts/FuturaFuturis.ttf") format("truetype");
+  font-weight: 400;
+}
+
+html,
+input,
+textarea {
+  font-family: var(--font-family-futura);
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+
+  color: var(--color-white);
+  background: var(--color-dark);
+}
+
+* {
+  box-sizing: inherit;
+  line-height: 130%;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
