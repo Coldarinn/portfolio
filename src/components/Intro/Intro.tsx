@@ -4,11 +4,10 @@ import { Animation } from "./Animation"
 import { Background } from "./Background"
 
 const Intro = () => {
-  const { word } = useTypingText({
-    words: ["code cool websites", "love React", "develop mobile apps"],
-    keySpeed: 150,
-    maxPauseAmount: 10,
-  })
+  const textRef = useTypingText(
+    ["code cool websites", "love React", "develop mobile apps"],
+    2,
+  )
 
   return (
     <Wrapper>
@@ -21,7 +20,7 @@ const Intro = () => {
       </Title>
 
       <Typing>
-        I <strong>{word}</strong>
+        I <strong ref={textRef} className="text"></strong>
       </Typing>
 
       <Animation />

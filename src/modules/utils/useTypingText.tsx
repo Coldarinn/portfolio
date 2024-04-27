@@ -1,92 +1,53 @@
-import { useState, useEffect, useRef } from "react"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { useRef } from "react"
+import TextPlugin from "gsap/TextPlugin"
 
-const FORWARD = "forward"
-const BACKWARD = "backward"
+export const useTypingText = (texts: string[] = [], duration = 2) => {
+  gsap.registerPlugin(TextPlugin)
+  const textRef = useRef(null)
 
-type Props = {
-  words: string[]
-  keySpeed?: number
-  maxPauseAmount?: number
-}
+  useGSAP(() => {
+    const textElement = textRef.current
+    let currentTextIndex = 0
 
-export const useTypingText = ({
-  words,
-  keySpeed = 1000,
-  maxPauseAmount = 10,
-}: Props) => {
-  const [wordIndex, setWordIndex] = useState(0)
-  const [currentWord, setCurrentWord] = useState(words[wordIndex].split(""))
-  const [isStopped, setIsStopped] = useState(false)
-  const direction = useRef(BACKWARD)
-  const typingInterval = useRef(0)
-  const letterIndex = useRef(0)
+    const animateText = () => {
+      const currentText = texts[currentTextIndex]
 
-  const stop = () => {
-    clearInterval(typingInterval.current)
-    setIsStopped(true)
-  }
-
-  useEffect(() => {
-    // Start at 0
-    let pauseCounter = 0
-
-    if (isStopped) return
-
-    const typeLetter = () => {
-      if (letterIndex.current >= words[wordIndex].length) {
-        direction.current = BACKWARD
-
-        // Begin pause by setting the maxPauseAmount prop equal to the counter
-        pauseCounter = maxPauseAmount
-        return
-      }
-
-      const segment = words[wordIndex].split("")
-      setCurrentWord(currentWord.concat(segment[letterIndex.current]))
-      letterIndex.current = letterIndex.current + 1
+      gsap.fromTo(
+        textElement,
+        { text: "" },
+        {
+          duration,
+          ease: "none",
+          onComplete: eraseText,
+          text: {
+            value: currentText,
+          },
+        },
+      )
     }
 
-    const backspace = () => {
-      if (letterIndex.current === 0) {
-        const isOnLastWord = wordIndex === words.length - 1
-
-        setWordIndex(!isOnLastWord ? wordIndex + 1 : 0)
-        direction.current = FORWARD
-
-        return
-      }
-
-      const segment = currentWord.slice(0, currentWord.length - 1)
-      setCurrentWord(segment)
-      letterIndex.current = currentWord.length - 1
+    const eraseText = () => {
+      gsap.to(textElement, {
+        onComplete: nextText,
+        duration,
+        delay: 3,
+        ease: "none",
+        text: {
+          value: "",
+          rtl: true,
+        },
+      })
     }
 
-    typingInterval.current = setInterval(() => {
-      // Wait until counter hits 0 to do any further action
-      if (pauseCounter > 0) {
-        pauseCounter = pauseCounter - 1
-        return
-      }
-
-      if (direction.current === FORWARD) {
-        typeLetter()
-      } else {
-        backspace()
-      }
-    }, keySpeed)
-
-    return () => {
-      clearInterval(typingInterval.current)
+    const nextText = () => {
+      currentTextIndex = (currentTextIndex + 1) % texts.length
+      animateText()
     }
-  }, [currentWord, wordIndex, keySpeed, words, maxPauseAmount, isStopped])
 
-  return {
-    word: (
-      <span className={`word ${currentWord.length ? "full" : "empty"}`}>
-        <span>{currentWord.length ? currentWord.join("") : ""}</span>
-      </span>
-    ),
-    start: () => setIsStopped(false),
-    stop,
-  }
+    animateText()
+  }, [texts, duration])
+
+  return textRef
 }
