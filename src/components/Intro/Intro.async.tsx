@@ -1,11 +1,3 @@
 import { lazy } from "react"
 
-export const IntroAsync = lazy(
-  () =>
-    new Promise((resolve) => {
-      setTimeout(() => {
-        // @ts-ignore
-        resolve(import("./Intro"))
-      }, 2000)
-    }),
-)
+export const IntroAsync = lazy(() => import("./Intro"))

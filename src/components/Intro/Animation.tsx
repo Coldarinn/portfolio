@@ -5,7 +5,7 @@ export const Animation = () => {
   const [isFinish, setIsFinish] = useState(false)
 
   useEffect(() => {
-    setTimeout(() => setIsFinish(true), 500)
+    setTimeout(() => setIsFinish(true), 250)
   }, [])
 
   return (
