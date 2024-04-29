@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 `
 const Col = styled.div`
   width: 20%;
-  height: 100vh;
+  height: 100%;
 
   position: relative;
   display: inline-block;
