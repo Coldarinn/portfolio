@@ -42,7 +42,8 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 
   overflow: hidden;
-  position: relative;
+  position: sticky;
+  top: 0;
 `
 const Title = styled.h1`
   margin: 0;
