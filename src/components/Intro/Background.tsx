@@ -230,4 +230,5 @@ const Wrapper = styled.div`
   transform: translateY(-50%);
 
   opacity: 0.6;
+  pointer-events: none;
 `
