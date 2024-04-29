@@ -5,7 +5,7 @@ export const Scrollbar = () => {
   const trackRef = useRef<HTMLDivElement>(null)
   const shadowRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useEffect(function subscribeOnScroll() {
     const changeScrollbarHeight = () => {
       if (trackRef.current && shadowRef.current) {
         let scrollbarHeight = document.body.scrollHeight - window.innerHeight
