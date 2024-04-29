@@ -1,12 +1,13 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import gsap from "gsap"
 import styled from "@emotion/styled"
+import { useGSAP } from "@gsap/react"
 
 export const Cursor = () => {
   const cursorOutlineRef = useRef(null)
   const cursorDotRef = useRef(null)
 
-  useEffect(() => {
+  useGSAP(() => {
     const cursorOutline = cursorOutlineRef.current
     const cursorDot = cursorDotRef.current
 
@@ -77,6 +78,7 @@ const CursorOutline = styled.div`
   mix-blend-mode: difference;
   pointer-events: none;
   opacity: 0;
+  transition: opacity 1s;
 `
 const CursorDot = styled.div`
   width: 10px;
@@ -93,4 +95,5 @@ const CursorDot = styled.div`
   mix-blend-mode: difference;
   pointer-events: none;
   opacity: 0;
+  transition: opacity 1s;
 `
