@@ -12,19 +12,19 @@ export const Cursor = () => {
 
     let xCTo = gsap.quickTo(cursorOutline, "x", {
       duration: 0.3,
-      ease: "power3",
+      ease: "back.out(4)",
     })
     let yCTo = gsap.quickTo(cursorOutline, "y", {
       duration: 0.3,
-      ease: "power3",
+      ease: "back.out(4)",
     })
     let xDTo = gsap.quickTo(cursorDot, "x", {
       duration: 0.6,
-      ease: "power3",
+      ease: "back.out(4)",
     })
     let yDTo = gsap.quickTo(cursorDot, "y", {
       duration: 0.6,
-      ease: "power3",
+      ease: "back.out(4)",
     })
 
     const moveCursor = (event: MouseEvent) => {
