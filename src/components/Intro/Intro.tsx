@@ -1,18 +1,23 @@
 import styled from "@emotion/styled"
-import { useTypingText } from "@/modules/utils/useTypingText"
 import { Animation } from "./Animation"
 import { Background } from "./Background"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { TextPlugin } from "gsap/TextPlugin"
+import { useRef } from "react"
+import gsap from "gsap"
 
 const Intro = () => {
-  const textRef = useTypingText([
+  const { typingRef } = useTypingText([
     "code cool websites",
     "love React",
     "develop mobile apps",
   ])
+  const { wrapperRef } = useParallax()
 
   return (
-    <Wrapper>
-      <Title>
+    <Wrapper ref={wrapperRef}>
+      <Title className="title">
         <Row>Hello</Row>
         <Row>
           I'm <strong>Palkin Kirill</strong>
@@ -20,8 +25,8 @@ const Intro = () => {
         <Row>Front-end Developer</Row>
       </Title>
 
-      <Typing>
-        I <strong ref={textRef} className="text"></strong>
+      <Typing className="text">
+        I <strong ref={typingRef} className="text"></strong>
       </Typing>
 
       <Animation />
@@ -29,8 +34,104 @@ const Intro = () => {
     </Wrapper>
   )
 }
-
 export default Intro
+
+const useTypingText = (texts: string[] = []) => {
+  const typingRef = useRef(null)
+
+  useGSAP(() => {
+    gsap.registerPlugin(TextPlugin)
+
+    const textElement = typingRef.current
+    let currentTextIndex = 0
+
+    const animateText = () => {
+      const currentText = texts[currentTextIndex]
+
+      gsap.fromTo(
+        textElement,
+        { text: "" },
+        {
+          duration: 2,
+          ease: "none",
+          onComplete: eraseText,
+          text: {
+            value: currentText,
+          },
+        },
+      )
+    }
+
+    const eraseText = () => {
+      gsap.to(textElement, {
+        onComplete: nextText,
+        duration: 2,
+        delay: 1,
+        ease: "none",
+        text: {
+          value: "",
+          rtl: true,
+        },
+      })
+    }
+
+    const nextText = () => {
+      currentTextIndex = (currentTextIndex + 1) % texts.length
+      animateText()
+    }
+
+    animateText()
+  }, [texts])
+
+  return { typingRef }
+}
+const useParallax = () => {
+  const wrapperRef = useRef(null)
+
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    const timeline = gsap.timeline({
+      defaults: { duration: 1 },
+      scrollTrigger: {
+        trigger: wrapperRef.current,
+        start: "bottom bottom",
+        end: "+=100%",
+        scrub: true,
+      },
+    })
+    timeline
+      .to(wrapperRef.current, {
+        opacity: "0",
+      })
+      .to(
+        ".title",
+        {
+          y: "-=45vh",
+          x: "-=300px",
+        },
+        0,
+      )
+      .to(
+        ".text",
+        {
+          y: "-=70vh",
+          x: "+=300px",
+        },
+        0,
+      )
+      .to(
+        ".background",
+        {
+          y: "-=30vh",
+          scale: 0.6,
+        },
+        0,
+      )
+  }, [])
+
+  return { wrapperRef }
+}
 
 const Wrapper = styled.div`
   height: 100vh;
