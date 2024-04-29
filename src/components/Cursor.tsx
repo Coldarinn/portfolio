@@ -27,7 +27,15 @@ export const Cursor = () => {
       ease: "back.out(4)",
     })
 
+    let isInited = false
+
     const moveCursor = (event: MouseEvent) => {
+      if (!isInited) {
+        isInited = true
+        gsap.to(cursorOutline, { duration: 0.1, opacity: 1 })
+        gsap.to(cursorDot, { duration: 0.1, opacity: 1 })
+      }
+
       const cursorPosition = {
         left: event.clientX,
         top: event.clientY,
@@ -68,6 +76,7 @@ const CursorOutline = styled.div`
   border: solid 1px var(--color-green);
   mix-blend-mode: difference;
   pointer-events: none;
+  opacity: 0;
 `
 const CursorDot = styled.div`
   width: 10px;
@@ -83,4 +92,5 @@ const CursorDot = styled.div`
   background: var(--color-green);
   mix-blend-mode: difference;
   pointer-events: none;
+  opacity: 0;
 `
