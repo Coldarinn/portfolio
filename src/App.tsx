@@ -10,7 +10,7 @@ import gsap from "gsap"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 
 export const App = () => {
-  useSmoothScroll()
+  // useSmoothScroll()
 
   return (
     <>

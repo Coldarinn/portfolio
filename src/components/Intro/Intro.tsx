@@ -17,20 +17,23 @@ const Intro = () => {
 
   return (
     <Wrapper ref={wrapperRef}>
-      <Title className="title">
-        <Row>Hello</Row>
-        <Row>
-          I'm <strong>Palkin Kirill</strong>
-        </Row>
-        <Row>Front-end Developer</Row>
-      </Title>
+      <Content className="content">
+        <Title>
+          <Row>Hello</Row>
+          <Row>
+            I'm <strong>Palkin Kirill</strong>
+          </Row>
+          <Row>Front-end Developer</Row>
+        </Title>
 
-      <Typing className="text">
-        I <strong ref={typingRef} className="text"></strong>
-      </Typing>
+        <Typing>
+          I <strong ref={typingRef}></strong>
+        </Typing>
+
+        <Background />
+      </Content>
 
       <Animation />
-      <Background />
     </Wrapper>
   )
 }
@@ -98,33 +101,17 @@ const useParallax = () => {
         start: "bottom bottom",
         end: "+=100%",
         scrub: true,
+        pin: true,
       },
     })
     timeline
       .to(wrapperRef.current, {
-        opacity: "0",
+        opacity: 0,
       })
       .to(
-        ".title",
+        ".content",
         {
-          y: "-=45vh",
-          x: "-=300px",
-        },
-        0,
-      )
-      .to(
-        ".text",
-        {
-          y: "-=70vh",
-          x: "+=300px",
-        },
-        0,
-      )
-      .to(
-        ".background",
-        {
-          y: "-=30vh",
-          scale: 0.6,
+          scale: 0.5,
         },
         0,
       )
@@ -138,13 +125,16 @@ const Wrapper = styled.div`
   min-height: 900px;
   padding: var(--gap-32);
 
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-
   overflow: hidden;
   position: sticky;
   top: 0;
+`
+const Content = styled.div`
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 `
 const Title = styled.h1`
   margin: 0;
